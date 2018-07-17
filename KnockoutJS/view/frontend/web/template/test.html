@@ -1,0 +1,32 @@
+<div id="main">
+    Price: <input type="number" name="price" id="price" size="10px" style="width:100px;
+    vertical-align: top;"/>
+    Qty: <input type="number" name="qty" id="qty" size="10px" style="width: 100px;"/>
+    <button data-bind=" click: getTotal">Get Total</button>
+
+    <button data-bind=" click: getProduct">Get Product</button>
+    <table>
+    <thead>
+    <tr>
+    <th>ID</th>
+    <th>Product Name</th>
+    <th>Product Price</th>
+    <th>Preview</th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: productList">
+    <tr>
+    <td data-bind="text: entity_id"></td>
+    <td data-bind="text: name"></td>
+    <td data-bind="text: price"></td>
+    <td><img data-bind="attr: {src: src}" width="120" height="150" alt="Product Image"></td>
+
+    </tr>
+    </tbody>
+    </table>
+    <a>Tong la:</a>
+    <div id="total-div">
+        <b>Total: </b>
+        <span id="total"/>
+    </div>
+</div>

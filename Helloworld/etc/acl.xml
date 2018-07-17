@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/ect/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magestore_HelloWorld::helloworld" title="Hello World" sortOrder="51">
+                    <resource id="Magestore_HelloWorld::post" title="Posts" sortOrder="10"/>
+                    <resource id="Magestore_HelloWorld::helloworld_configuration" title="Configuration" sortOrder="99" />
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magestore_HelloWorld::helloworld_config" title="Hello World"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

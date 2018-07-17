@@ -1,0 +1,52 @@
+<style>
+    /* Style for Login page */
+    .ms-webpos .login-screen{position:relative;background:url(../web/images/bg-login-bottom.png) no-repeat center bottom;height:100vh;width:100vw;background-size:100% auto}
+    .ms-webpos .login-screen .title-page{font-size:20px;color:#3c4857;text-align:center;margin-bottom:25px}
+    .ms-webpos .login-screen .wrap-login-form{position:absolute;top:calc(50% - 170px);left:calc(50% - 170px);width:340px}
+    .ms-webpos .login-screen .wrap-login-form button.btn.btn-default{background:#00a679;border:0 none;text-shadow:0 0 0;color:#fff;font-size:15px;text-transform:uppercase;width:100%;height:50px;line-height:50px;padding:0}
+    .ms-webpos .login-screen .wrap-login-form .wrap-input{border:1px solid #ccc;border-radius:5px}
+    .ms-webpos .login-screen .wrap-login-form .wrap-input .input-box{position:relative}
+    .ms-webpos .login-screen .wrap-login-form .wrap-input .input-box div.mage-error{position:absolute;left:100%;top:20px;width:200px;margin-left:20px}
+    .ms-webpos .login-screen .wrap-login-form .wrap-input input{border:0 none;box-shadow:0 0 0;border-radius:0;background:none transparent;height:55px;line-height:55px;text-align:center;font-size:15px;color:#3c4857}
+    .ms-webpos .login-screen .wrap-login-form .wrap-input input#username{border-bottom:1px solid #ccc}
+    /* End Style for Login page */
+</style>
+<div class="ms-webpos">
+    <div class="login-screen">
+
+        <div class="wrap-login-form">
+            <form class="form-login" role="form" id="webpos-login" method="post">
+                <h1 class="title-page"><img src="<?php echo $block->getLogoUrl();?>" width="200px" height="200px" alt="logo"/></h1>
+                <div class="form-group wrap-input">
+                    <div class="input-box"><input type="text" class="form-control required-entry required" id="username" name="username" placeholder="Username"></div>
+                    <div class="input-box"><input type="password" class="form-control required-entry required" id="pwd"
+                                                  name="password" placeholder="Password"></div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default"><?php echo __('Login');?></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    window.webposConfig = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($block->getWebposConfig()); ?>;
+</script>
+
+<script>
+    require(
+        [
+            'mage/url',
+        ], function (url) {
+            return url.setBaseUrl('<?php /* @escapeNotVerified */ echo $block->getBaseUrl();?>');
+        });
+</script>
+
+<script>
+    require([
+        'jquery',
+        'Magestore_Webpos/js/login'
+    ], function ($) {
+        $('#webpos-login').webposLogin();
+    })
+</script>

@@ -1,0 +1,12 @@
+<div class="container pos_container" data-bind="attr:{id:getContainerId()}">
+    <button class="c-button show-menu-button" data-bind="click:showMenu"><span class="icon-iconPOS-menu"></span></button>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- ko foreach: elems() -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+    </div>
+</div>
+
+

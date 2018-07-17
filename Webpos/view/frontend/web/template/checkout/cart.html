@@ -1,0 +1,32 @@
+<div id="webpos_cart" class="col-sm-4 col-right">
+    <!-- ko if: loading() -->
+    <div class="indicator">
+        <div class="spinner"></div>
+    </div>
+    <!-- /ko -->
+    <header class="o-header">
+        <nav class="o-header-nav">
+            <!-- ko if:isOnCheckoutPage() && !createdOrder() -->
+            <button id="back_to_cart" class="c-button" data-bind="click:switchToCart"><span class="icon-iconPOS-previous"></span></button>
+            <!-- /ko -->
+            <!-- ko ifnot:isOnCheckoutPage() -->
+            <button id="empty_cart" class="c-button" data-bind="click:emptyCart"><span class="icon-iconPOS-emptycart"></span></button>
+            <!-- /ko -->
+            <label class="title title-cart title-header-page" data-bind="text:cartTitle"></label>
+            <div class="more-info" >
+                <a href="#"><span class="icon-iconPOS-more"></span></a>
+            </div>
+        </nav>
+        <div class="actions-customer">
+        </div>
+    </header>
+
+    <div class="main-item-order">
+        <!-- ko foreach: {data:getRegion('webpos.cart.items')} -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko foreach: {data:getRegion('webpos.cart.totals')} -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>

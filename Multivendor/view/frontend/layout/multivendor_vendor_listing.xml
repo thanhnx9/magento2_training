@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
+      layout="1column">
+    <head>
+        <title>Vendor</title>
+        <css src="Magestore_Multivendor::css/vendor.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block name="vendor" class="Magestore\Multivendor\Block\Vendor"
+                   template="Magestore_Multivendor::vendor.phtml" />
+        </referenceContainer>
+    </body>
+</page>

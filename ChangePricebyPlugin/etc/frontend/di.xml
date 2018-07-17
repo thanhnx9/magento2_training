@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+    <plugin name="change_price" type="Magestore\ChangePricebyPlugin\Plugin\Product" sortOrder="1" disabled="true"/>
+    </type>
+</config>

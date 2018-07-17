@@ -1,0 +1,16 @@
+<div data-bind="text: ko.toJSON(items, null, 2)"></div>
+<div class="row no-method-available" data-bind="visible: (items().length == 0)">
+    <span data-bind="i18n: 'No payment method is available'"></span>
+</div>
+<div class="row" id="payment_list" data-bind="visible:visible,foreach: items">
+    <div  class="col-sm-3">
+        <div class="item">
+            <div class="payment" data-bind="click: $parent.setPaymentMethod">
+                <div class="icon-payment">
+                    <span class="icon-iconPOS-payment-cp1forpos"></span>
+                </div>
+                <label data-bind="text: title"></label>
+            </div>
+        </div>
+    </div>
+</div>

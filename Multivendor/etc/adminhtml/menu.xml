@@ -1,0 +1,34 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magestore_Multivendor::vendor"
+             title="Multivendor"
+             module="Magestore_Multivendor"
+             sortOrder="30"
+             resource="Magestore_Multivendor::vendor"
+        />
+        <add id="Magestore_Multivendor::vendor_manage"
+             title="Manage Vendor"
+             module="Magestore_Multivendor"
+             sortOrder="1"
+             parent="Magestore_Multivendor::vendor"
+             action="multivendoradmin/vendor/index"
+             resource="Magestore_Multivendor::vendor_manage"
+        />
+        <add
+        id="Magestore_Multivendor::vendor_configuration"
+        title="Configuration"
+        module="Magestore_Multivendor"
+        sortOrder="89"
+        parent="Magestore_Multivendor::vendor"
+        resource="Magestore_Multivendor::vendor_configuration"
+        action="adminhtml/system_config/edit/section/multivendor"
+        />
+        <add id="Magestore_Multivendor::setting"
+             resource="Magestore_Multivendor::setting"
+             module="Magestore_Multivendor" title="Settings" sortOrder="4"
+             action="adminhtml/system_config/edit/section/multivendor"
+             parent="Magestore_Multivendor::vendor"
+        />
+
+    </menu>
+</config>

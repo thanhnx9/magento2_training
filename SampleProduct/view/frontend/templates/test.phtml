@@ -1,0 +1,21 @@
+
+    <div id='sample-div' data-bind="scope:'test'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+            {
+            "#sample-div": {
+            "Magento_Ui/js/core/app": {
+                  "components" : {
+                     "test": {
+                          "component": "Magestore_SampleProduct/js/view/test",
+                           "displayArea": "demo"
+                      }
+                  }
+               }
+            }
+            }
+        </script>
+    </div>
+    <div>
+        <b>THEM AK</b>
+    </div>

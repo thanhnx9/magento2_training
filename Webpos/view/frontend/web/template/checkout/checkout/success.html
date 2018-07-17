@@ -1,0 +1,30 @@
+<div id='success_container' class="webpos_container rightToLeft col-sm-8 col-left" data-bind="css:{active:createdOrder}">
+    <header class="o-header checkout-header">
+        <div class="price-box">
+            <span class="price" data-bind="text:$data.getGrandTotal()"></span>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="wrap-success-content">
+            <div class="top-text">
+                <span class="icon-iconPOS-success"><span class="path1"></span><span class="path2"></span></span>
+                <div class="notify-order">
+                    <div data-bind="i18n:'Order has been created successfully'"></div>
+                    <div><span data-bind="i18n:'Order ID:  '"></span><strong data-bind="text:getOrderIdMessage()"></strong></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="checkout-footer">
+        <div class="wrap-footer">
+            <ul>
+                <li class="actions">
+                    <div class="row">
+                        <div class="col-sm-6"><button class="add-payment button btn-cl-cfg-other" data-bind="click:printReceipt,i18n:'Print'"></button></div>
+                        <div class="col-sm-6"><button class="checkout-actions button btn-cl-cfg-active" data-bind="click:startNewOrder,i18n:'New Order'"></button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</div>

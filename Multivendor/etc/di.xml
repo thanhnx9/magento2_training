@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magestore\Multivendor\Model\ResourceModel\Vendor\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">multivendor_vendor</argument>
+            <argument name="resourceModel" xsi:type="string">Magestore\Multivendor\Model\ResourceModel\Vendor</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="multivendor_vendor_listing_data_source"
+                      xsi:type="string">Magestore\Multivendor\Model\ResourceModel\Vendor\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Layer">
+        <plugin name="vendor_list"
+                type="Magestore\Multivendor\Plugin\Catalog\Layer"/>
+    </type>
+    <type name="Magento\Framework\Data\Collection\AbstractDb">
+        <plugin name="vendor_product_list"
+                type="Magestore\Multivendor\Plugin\Catalog\Product\Collection\AbstractDb"/>
+    </type>
+</config>

@@ -1,0 +1,108 @@
+<?php if (!$block->customerLoggedIn()): ?>
+    <style>
+        .popup-login {
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .popup-login .form-login {
+            width: 300px;
+            margin: 0 auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -ms-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+            background: #fff;
+            padding: 25px;
+            color: #333;
+            border: 1px solid #aeaeae;
+            border-radius: 5px;
+            box-shadow: 0 0 25px #555;
+        }
+        .popup-login .form-login .block-title {
+            font-size: 2.6rem;
+            border-bottom: 0;
+            margin-bottom: 25px;
+        }
+        .popup-login .form-login .block-title strong {
+            font-weight: 300;
+        }
+        .popup-login .form-login .fieldset > .field > .label {
+            font-weight: 400;
+        }
+        .popup-login .form-login .actions-toolbar .primary {
+            display: inline;
+            float: right;
+            margin-right: 0;
+        }
+        .popup-login .form-login .actions-toolbar .primary button {
+            line-height: 2.2rem;
+            padding: 14px 17px;
+            font-size: 1.8rem;
+        }
+        .popup-login .form-login .actions-toolbar > .secondary:last-child {
+            margin-top: 11px;
+        }
+        .popup-login .form-login .messages .message {
+            display: none;
+        }
+    </style>
+    <div class="popup-login modal-custom">
+        <form method="post" id="form-login" class="form-login">
+            <header class="modal-header">
+                <button class="action-close" data-role="closeBtn" type="button">
+                    <span><?php echo __('Close'); ?></span>
+                </button>
+            </header>
+            <div class="block-title">
+                <strong id="block-customer-login-heading"><?php echo __('Sign In'); ?></strong>
+            </div>
+            <div class="messages">
+                <div class="message message-error error">
+                    <div>Invalid login or password.</div>
+                </div>
+            </div>
+            <div class="fieldset">
+                <div class="field field-email required">
+                    <label class="label" for="login-email"><?php echo __('Email Address'); ?></label>
+                    <div class="control">
+                        <input type="email" class="input-text" id="login-email" name="username" autocomplete="off" data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <div class="field field-password required">
+                    <label for="login-password" class="label"><?php echo __('Password'); ?></label>
+                    <div class="control">
+                        <input type="password" class="input-text" id="login-password" name="password" autocomplete="off" data-validate="{required:true, 'validate-password':true}">
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <input name="context" type="hidden" value="checkout">
+                <div class="primary">
+                    <button type="submit" class="action action-login secondary"><?php echo __('Sign In'); ?></button>
+                </div>
+                <div class="secondary">
+                    <a class="action action-remind" href="<?php echo $block->getForgotPasswordUrl();?>">
+                        <span><?php echo __('Forgot Your Password?'); ?></span>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/x-magento-init">
+      "#popup-login modal-custom": {
+            "Magestore_Ex9/js/customer-login":{
+                "url":"127.0.0.2",
+                "method":"post"
+            }
+       }
+     </script>
+<?php endif; ?>

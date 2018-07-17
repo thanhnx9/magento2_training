@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<page layout='webpos' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" >
+    <body>
+        <referenceBlock name="webpos.page">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="webpos.container" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="checkout" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="webpos.checkout" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magestore_Webpos/js/view/checkout/checkout</item>
+                                            <item name="displayArea" xsi:type="string">webpos.checkout</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="webpos.checkout.shipping" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/checkout/checkout/shipping</item>
+                                                    <item name="displayArea" xsi:type="string">webpos.checkout.shipping</item>
+                                                </item>
+                                                <item name="webpos.checkout.payment" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/checkout/checkout/payment</item>
+                                                    <item name="displayArea" xsi:type="string">webpos.checkout.payment</item>
+                                                </item>
+                                                <item name="webpos.checkout.success" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/checkout/checkout/success</item>
+                                                    <item name="displayArea" xsi:type="string">webpos.checkout.success</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/config.xsd">
+    <!--<type name="\Magento\Catalog\Helper\Image">-->
+        <!--<plugin name="Change_Product_Image_In_Checkout_Cart" type="Magestore\Ex7Plugin\Plugin\CheckoutCart\Image" sortOrder="1" disabled="false"/>-->
+    <!--</type>-->
+    <!--<type name="Magento\Checkout\Controller\Cart\Add">-->
+        <!--<plugin name="Add_To_Cart_Success" type="Magestore\Ex7Plugin\Plugin\CheckoutCart\Add" sortOrder="2" disabled="false"/>-->
+    <!--</type>-->
+</config>

@@ -1,0 +1,40 @@
+<div id="main">
+    <p>I am template located on: app/code/DemoKnockout/Js/view/frontend/web/template/demo.html and dynamically loaded. This is my message to you:</p>
+    <p data-bind="text: sayhello"></p>
+    <p data-bind="text: time"></p>
+
+</div>
+<div id="content-2" >
+    <h1 data-bind="text:getTitle()"></h1>
+    <p data-bind="text:king"></p>
+    <select class="custom-select" data-bind="value:theValue" style="width:200px;">
+        <option value="1">---Choose---</option>
+        <option value="2">First</option>
+        <option value="3">Second</option>
+        <option value="4">Third</option>
+    </select>
+    <input type="text" data-bind="value:theValue" style="width: 200px; color: red"/>
+    <br>
+    <button id="doIt" data-bind="click:PickRandomValue()">Click ME</button>
+    <div id="tableProduct">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Preview</th>
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: productList">
+            <tr>
+                <td data-bind="text: entity_id"></td>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: price"></td>
+                <td><img data-bind="attr: {src: src}" width="120" height="150" alt="Product Image"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

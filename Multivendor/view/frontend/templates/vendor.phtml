@@ -1,0 +1,27 @@
+<?php
+/* @var Magestore\Multivendor\Block\Vendor $block */
+?>
+<?php
+$collection = $block->getVendorCollection();
+?>
+
+<div class="vendor-list">
+    <div class="vendor">
+        <ul>
+            <?php
+            foreach ($collection as $vendorModel) : ?>
+                <li>
+                    <a href="<?php echo $block->getStoreManager()->getStore()
+                            ->getUrl('multivendor/vendor/view') . 'id/' . $vendorModel->getId(); ?>">
+<!--                        lấy url-->
+                        <?php
+                        $img = $block->getMediaUrlImage($vendorModel->getLogo());
+                        ?>
+                        <img src="<?php echo $img; ?>" alt="<?php echo $vendorModel->getName();?>"/>
+                        <div class="box"><?php echo $vendorModel->getName(); ?></div>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

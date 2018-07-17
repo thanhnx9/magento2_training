@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magestore_Webpos::main_menu"
+             title="Magestore"
+             resource="Magestore_Webpos::main_menu"
+             module="Magestore_Webpos"
+             sortOrder="20"/>
+        <add id="Magestore_Webpos::checkout"
+             title="Checkout"
+             module="Magestore_Webpos"
+             sortOrder="10"
+             resource="Magestore_Webpos::checkout"
+             parent="Magestore_Webpos::webpos"
+             action="webpos/index/index"/>
+        <add id="Magestore_Webpos::webpos"
+             title="WebPOS"
+             module="Magestore_Webpos"
+             sortOrder="10"
+             parent="Magestore_Webpos::main_menu"
+             dependsOnModule="Magestore_Webpos"
+             resource="Magestore_Webpos::webpos"/>
+        <add id="Magestore_Webpos::staff"
+             title="Staff Management"
+             module="Magestore_Webpos"
+             sortOrder="5"
+             parent="Magestore_Webpos::webpos"
+             dependsOnModule="Magestore_Webpos"
+             action="webpos/staff"
+             resource="Magestore_Webpos::staff"/>
+        <add id="Magestore_Webpos::settings"
+             title="Settings"
+             module="Magestore_Webpos"
+             sortOrder="10"
+             parent="Magestore_Webpos::webpos"
+             dependsOnModule="Magestore_Webpos"
+             action="adminhtml/system_config/edit/section/Magestore_webpos"
+             resource="Magestore_Webpos::settings"/>
+    </menu>
+</config>

@@ -1,0 +1,10 @@
+<?php
+/* @var Magestore\Multivendor\Block\View $block */
+?>
+
+<h2><?php echo $block->getVendorModel()->getName();?></h2>
+<?php
+$img = $block->getMediaUrlImage($block->getVendorModel()->getLogo());
+?>
+<img src="<?php echo $img; ?>" alt="<?php echo $block->getVendorModel()->getName();?>"/>
+<h2><?php echo $block->getVendorModel()->getDescription();?></h2>

@@ -1,0 +1,8 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magestore_Film::film" title="Film" module="Magestore_Film"
+             sortOrder="30" resource="Magestore_Film::film"/>
+        <add id="Magestore_Film::film_manage" title="Manage Film" module="Magestore_Film"
+             sortOrder="1" parent="Magestore_Film::film" action="adminfilm/film/index" resource="Magestore_Film::film_manage"/>
+    </menu>
+</config>

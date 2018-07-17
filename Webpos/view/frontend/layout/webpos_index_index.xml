@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<page layout='webpos' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" >
+    <update handle="webpos_product_list"/>
+    <update handle="webpos_sales_order"/>
+    <update handle="webpos_cart"/>
+    <update handle="webpos_checkout"/>
+    <update handle="webpos_customer"/>
+    <head>
+        <meta name="x_ua_compatible" content="IE=edge,chrome=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Webpos</title>
+        <script src="requirejs/require.js"/>
+        <css src="Magestore_Webpos::css/style.css"/>
+        <css src="Magestore_Webpos::css/bootstrap/bootstrap.css"/>
+        <css src="Magestore_Webpos::css/general.css"/>
+        <css src="Magestore_Webpos::css/webpos.css"/>
+        <css src="Magestore_Webpos::css/responsive.css"/>
+    </head>
+
+    <body>
+        <block name="require.js" class="Magento\Framework\View\Element\Template" template="Magento_Theme::page/js/require_js.phtml" />
+
+        <referenceContainer name="after.body.start">
+            <block class="Magento\RequireJs\Block\Html\Head\Config" name="requirejs-config"/>
+        </referenceContainer>
+
+        <referenceContainer name="main">
+            <container name="content" label="Main Content Area">
+                <block class="Magento\Framework\View\Element\FormKey" name="formkey"/>
+                <block class="Magestore\Webpos\Block\Login" name="webpos_login" template="Magestore_Webpos::login.phtml" />
+                <block class="Magestore\Webpos\Block\Page" name="webpos.page" template="Magestore_Webpos::page.phtml">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="webpos.container" xsi:type="array">
+                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/container</item>
+                                    <item name="displayArea" xsi:type="string">webpos.container</item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="checkout" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magestore_Webpos/js/view/container/checkout</item>
+                                            <item name="displayArea" xsi:type="string">checkout</item>
+                                            <item name="children" xsi:type="array">
+
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                <item name="webpos.menu" xsi:type="array">
+                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/menu</item>
+                                    <item name="displayArea" xsi:type="string">webpos.menu</item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="order" xsi:type="array">
+                                            <item name="sortOrder" xsi:type="string">0</item>
+                                            <item name="component" xsi:type="string">Magestore_Webpos/js/view/menu/group</item>
+                                            <item name="id" xsi:type="string">order</item>
+                                            <item name="title" xsi:type="string">Orders</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="checkout" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">0</item>
+                                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/menu/item</item>
+                                                    <item name="data" xsi:type="array">
+                                                        <item name="id" xsi:type="string">checkout</item>
+                                                        <item name="title" xsi:type="string">Checkout</item>
+                                                        <item name="container" xsi:type="string">checkout</item>
+                                                        <item name="is_display" xsi:type="string">1</item>
+                                                        <item name="icon_class" xsi:type="string">icon-iconPOS-checkout</item>
+                                                    </item>
+                                                </item>
+                                                <item name="orders_history" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">1</item>
+                                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/menu/item</item>
+                                                    <item name="data" xsi:type="array">
+                                                        <item name="id" xsi:type="string">orders_history</item>
+                                                        <item name="title" xsi:type="string">Orders History</item>
+                                                        <item name="container" xsi:type="string">orders_history</item>
+                                                        <item name="is_display" xsi:type="string">1</item>
+                                                        <item name="icon_class" xsi:type="string">icon-iconPOS-order-history</item>
+                                                    </item>
+                                                </item>
+                                                <item name="customer" xsi:type="array">
+                                                    <item name="sortOrder" xsi:type="string">1</item>
+                                                    <item name="component" xsi:type="string">Magestore_Webpos/js/view/menu/item</item>
+                                                    <item name="data" xsi:type="array">
+                                                        <item name="id" xsi:type="string">customer</item>
+                                                        <item name="title" xsi:type="string">Customers</item>
+                                                        <item name="container" xsi:type="string">customer_list</item>
+                                                        <item name="is_display" xsi:type="string">1</item>
+                                                        <item name="icon_class" xsi:type="string">icon-iconPOS-customer-list</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

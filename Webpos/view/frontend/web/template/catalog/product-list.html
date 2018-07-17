@@ -1,0 +1,101 @@
+<div class="col-sm-8 col-left" id="product-list-wrapper">
+    <header class="o-header">
+        <nav class="o-header-nav">
+            <div class="form-inline" role="form">
+                <div class="form-group">
+                    <span class="icon-iconPOS-search"></span>
+                    <input type="search"
+                           class="form-control search-header" id="search-header-product"
+                           placeholder="Enter terms or scan barcodes to search" data-bind="value: searchKey, event: {change: filter}">
+                    <a id="remove-text-search-product" class="remove-text">
+                        <span class="icon-iconPOS-delete"></span>
+                    </a>
+                </div>
+                <button type="submit" class="btn btn-default">Search
+                </button>
+            </div>
+            <div class="catalog-header" data-toggle="collapse" data-target="#all-categories" data-bind="click: getAllCategories">
+                <span class="icon-iconPOS-categories"></span>
+                <span class="title title-header-page" data-bind="i18n: 'All Categories'"></span>
+                <span class="icon-iconPOS-dropdown"></span>
+            </div>
+        </nav>
+        <div id="all-categories" class="collapse">
+            <div id="list-cat-header" class="owl-carousel"></div>
+        </div>
+    </header><!-- /o-header -->
+    <main class="main-content">
+        <div id="block-product-list">
+            <div class="grid-data">
+                <div class="wrap-list-product scroll-grid" style="">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <!-- ko foreach: product -->
+                            <div class="col-sm-3" data-bind="click: $parent.addToCart.bind($data)">
+                                <!--<div data-bind="text: ko.toJSON($data, null, 2)"></div>-->
+                                <div class="item product-item">
+                                    <div class="product-img">
+                                        <a class="warning"
+                                           title="Out of stock" style="display: none;"><span
+                                                class="icon-iconPOS-out-of-stock"></span></a>
+                                        <img width="119" height="auto"
+                                             data-bind="attr: {src: image,alt: image}">
+                                    </div>
+                                    <div class="product-info">
+                                        <h3 class="product-name" data-bind="text:name"></h3>
+                                        <div>
+                                            <span class="final-price price"  data-bind="text: $parent.formatPrice(price)"></span>
+                                        </div>
+                                        <span>Available qty: </span>
+                                        <label data-bind="text: stock"></label>
+                                    </div>
+                                    <a data-target="#popup-product-details" data-toggle="modal" class="info" href="#" data-bind="click: $parent.showPopupDetails.bind($parent), attr: {'title': $t('View product details')}">
+                                        <span class="icon-iconPOS-detail"><span class="path1"></span><span class="path2"></span></span>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <!--/ko-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main><!-- /o-content -->
+    <div class="col-sm-8 col-left wrap-list-product" id='product-list-overlay' style="opacity: 1; background-color: #fff; position: fixed; z-index: 99999">
+        <span class="product-loader"></span>
+    </div>
+    <footer class="list-product-footer">
+        <div class="wrap-footer">
+            <div class="product-total-loading">
+                <label class="number-product" data-bind="text: numberOfProduct" ></label><label>products</label>
+                <span style="display: none;"></span>
+            </div>
+            <div id="productPager">
+                <ul class="pagination-pos" style="margin-top: 0px">
+                    <!-- ko if: (curPage() > 1) -->
+                    <li style="float: left"><span data-bind="click: previous" class="icon-iconPOS-previous" aria-hidden="true"></span></li>
+                    <!--/ko-->
+                    <li class="pager-list"><span class="pager" data-bind="text: curPage"></span></li>
+                    <!-- ko if: (curPage() < (numberOfPage() - 1) ) -->
+                    <li style="float: left">
+                        <span class="icon-iconPOS-next" data-bind="click: next" aria-hidden="true"></span>
+                    </li>
+                    <!--/ko-->
+                </ul>
+            </div>
+            <label class="custom-sale pos_modal_link" style="visibility: hidden" data-toggle="modal"
+                   data-target="#popup-custom-sale">
+                <span class="icon-iconPOS-customer-sale"></span>
+                <span class="pos_modal_link">Custom sale</span>
+            </label>
+        </div>
+    </footer>
+</div>
+<!-- Popup Product detail -->
+<div id="webpos_catalog_product_detail_popup" class="modal fade customer-popup-form" role="dialog" data-bind="scope:'webpos_catalog_product_detail_popup'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<style type="text/css">
+    .scroll-grid {height: 400px; overflow-x: auto;}
+</style>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magestore\Webpos\Model\ResourceModel\Staff\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">webpos_staff</argument>
+            <argument name="resourceModel" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Staff</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="webpos_staff_listing_data_source" xsi:type="string">Magestore\Webpos\Model\ResourceModel\Staff\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magestore\Webpos\Model\WebposConfigProvider\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="webpos_default_config_provider" xsi:type="object">Magestore\Webpos\Model\WebposConfigProvider\DefaultConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Magento\Webapi\Controller\Rest\RequestValidator" type="Magestore\Webpos\Controller\Rest\RequestValidator"/>
+    <preference for="Magento\Webapi\Controller\Rest" type="Magestore\Webpos\Controller\Rest"/>
+    <preference for="Magestore\Webpos\Api\Staff\StaffRepositoryInterface"
+                type="Magestore\Webpos\Model\Repository\Staff\StaffRepository"/>
+
+    <!-- product api -->
+    <preference for="Magestore\Webpos\Api\Catalog\ProductRepositoryInterface"
+                type="Magestore\Webpos\Model\Repository\Catalog\ProductRepository"/>
+    <!--<preference for="Magestore\Webpos\Api\Catalog\SwatchRepositoryInterface"-->
+                <!--type="Magestore\Webpos\Model\Repository\Catalog\SwatchRepository"/>-->
+    <!--<preference for="Magestore\Webpos\Api\Data\Catalog\SwatchResultInterface"-->
+                <!--type="Magento\Framework\Api\SearchResults"/>-->
+    <preference for="Magestore\Webpos\Api\Data\Catalog\ProductInterface"
+                type="Magestore\Webpos\Model\Repository\Catalog\Product"/>
+    <!-- end product api -->
+
+    <preference for="Magestore\Webpos\Api\Checkout\CheckoutRepositoryInterface"
+                type="Magestore\Webpos\Model\Repository\Checkout\CheckoutRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\QuoteDataInterface"
+                type="Magestore\Webpos\Model\Checkout\QuoteData"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\ItemBuyRequestInterface"
+                type="Magestore\Webpos\Model\Checkout\ItemBuyRequest"/>
+    <preference for="Magestore\Webpos\Api\Data\Checkout\ResponseInterface"
+                type="Magestore\Webpos\Model\Checkout\Response"/>
+
+    <!-- order api -->
+    <preference for="Magestore\Webpos\Api\Sales\OrderRepositoryInterface"
+                type="Magestore\Webpos\Model\Sales\OrderRepository"/>
+    <preference for="Magestore\Webpos\Api\Data\Sales\OrderSearchResultInterface"
+                type="Magestore\Webpos\Model\ResourceModel\Sales\Order\Collection"/>
+    <preference for="Magestore\Webpos\Api\Data\Sales\OrderInterface" type="Magestore\Webpos\Model\Sales\Order"/>
+    <!-- end order api -->
+
+    <!-- shipment api -->
+    <preference for="Magestore\Webpos\Api\Sales\ShipmentRepositoryInterface"
+                type="Magestore\Webpos\Model\Sales\Order\ShipmentRepository"/>
+    <!-- end shipment api -->
+
+    <!-- invoice api -->
+    <preference for="Magestore\Webpos\Api\Sales\InvoiceRepositoryInterface"
+                type="Magestore\Webpos\Model\Sales\Order\InvoiceRepository"/>
+    <!-- end invoice api -->
+</config>

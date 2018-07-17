@@ -1,0 +1,82 @@
+<div class="order-pages">
+    <!-- ko ifnot: orderData -->
+    <div class="col-sm-8 col-left">
+        <header class="o-header">
+            <nav class="o-header-nav">
+                <span></span>
+                <label class="title" data-bind="text: ('Order Details')"></label>
+                <span></span>
+            </nav>
+        </header>
+        <main class="main-content main-content-no-order">
+            <div class="pos-machine icon-info"></div>
+            <div class="text-note">
+                <span class="icon-iconPOS-empty-order"></span>
+                <h4 class="title-box" data-bind="text: ('You don\'t have any orders yet')"></h4>
+            </div>
+        </main>
+    </div>
+    <!--/ko-->
+    <!-- ko if: orderData -->
+    <div class="col-sm-8 col-left" id="webpos_order_view_container">
+        <header class="o-header">
+            <!-- ko template: {name: templateTop, data: $parent} -->
+            <!-- /ko -->
+        </header>
+
+        <main class="main-content">
+            <div class="panel-group order-info">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 data-bind="text: ('Billing Address')"/>
+                            </div>
+                            <!-- ko template: {name: templateBilling, data: $parent} -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 data-bind="text: ('Shipping Address')"/>
+                            </div>
+                            <!-- ko template: {name: templateShipping, data: $parent} -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- ko template: {name: templatePaymentMethod, data: $parent} -->
+                    <!-- /ko -->
+                    <!-- ko template: {name: templateShippingMethod, data: $parent} -->
+                    <!-- /ko -->
+                </div>
+                <div class="row">
+                    <!-- ko template: {name: templateItems, data: $parent} -->
+                    <!-- /ko -->
+                </div>
+
+            </div>
+        </main>
+        <footer class="footer-order">
+            <!-- ko template: {name: templateTotal, data: $parent} -->
+            <!-- /ko -->
+            <!-- ko if: orderData -->
+            <div class="">
+                <div class="action-button">
+                    <!-- ko if: showInvoiceButton -->
+                    <button class="button invoice btn-cl-cfg-active" data-toggle="modal"
+                            data-bind="text: ('Invoice'), click: invoice.bind($data)"/>
+                    <!--/ko-->
+                    <!-- ko if: showShipmentButton -->
+                    <button class="button invoice btn-cl-cfg-active" data-toggle="modal"
+                            data-bind="text: ('Shipment'), click: shipment.bind($data)"/>
+                    <!--/ko-->
+                </div>
+            </div>
+            <!-- /ko -->
+        </footer>
+    </div>
+    <!-- /ko -->
+</div>

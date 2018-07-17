@@ -1,0 +1,36 @@
+<script>
+    window.webposConfig = <?php /* @escapeNotVerified */ echo \Zend_Json::encode($block->getWebposConfig()); ?>;
+</script>
+<script>
+    require(
+        [
+            'mage/url'
+        ], function (url) {
+            return url.setBaseUrl('<?php /* @escapeNotVerified */ echo $block->getBaseUrl();?>');
+        });
+</script>
+
+<div class="ms-webpos">
+    <div id="o-wrapper" class="o-wrapper  wrap-checkout-page" data-bind="scope:'webpos.container'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+    <nav id="c-menu--push-left" class="c-menu c-menu--push-left" data-bind="scope:'webpos.menu'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </nav>
+</div>
+
+<script type="text/x-magento-init">
+   {
+       "*": {
+           "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout(); ?>
+       }
+   }
+</script>
+<script>
+    require([
+        'jquery',
+        'Magestore_Webpos/js/bootstrap/bootstrap',
+        'Magestore_Webpos/js/bootstrap/bootstrap-switch'
+    ], function($){
+    });
+</script>

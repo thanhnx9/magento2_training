@@ -1,0 +1,139 @@
+/*
+ *  Copyright © 2016 Magestore. All rights reserved.
+ *  See COPYING.txt for license details.
+ *
+ */
+ul li {
+    list-style-type: none;
+}
+.pos_container{width:100vw;height:100vh;position:fixed;left:-101vw;top:0;transition-property:left;transition-duration:.5s;background:#fff;z-index:100}
+.pos_container.active{left:0}
+#webpos_checkout{position:fixed;background:#fff;z-index:100;right:-100vw;transition-property:right;transition-duration:.5s}
+#webpos_checkout.active{right:0}
+#checkout_container{transition-property:left;transition-duration:.5s;position:fixed;left:0;top:0;width:100vw}
+.indicator{width:100%;height:100vh;background:#fff;line-height:100vh;text-align:center;position:absolute;opacity:.7;z-index:9999}
+.indicator .spinner{position:absolute;left:50%;top:50%;margin-left:-16px;margin-top:-16px;width:32px;height:32px;background:url(../images/AjaxLoader.gif) no-repeat center}
+.main-item-order .indicator .spinner{top:calc(50% - 150px);}
+#webpos_checkout .indicator{position:fixed;top:0;left:0}
+@-ms-keyframes spin {
+    from{-ms-transform:rotate(0deg)}
+    to{-ms-transform:rotate(360deg)}
+}
+@-moz-keyframes spin {
+    from{-moz-transform:rotate(0deg)}
+    to{-moz-transform:rotate(360deg)}
+}
+@-webkit-keyframes spin {
+    from{-webkit-transform:rotate(0deg)}
+    to{-webkit-transform:rotate(360deg)}
+}
+@keyframes spin {
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+.webpos_container{height:100%;position:fixed;top:0;transition-duration:.5s;background:#fff;z-index:110}
+.webpos_container.rightToLeft{right:-100vw;transition-property:right}
+.webpos_container.leftToRight{left:-100vw;transition-property:left}
+.webpos_container.rightToLeft.active{right:0}
+.webpos_container.leftToRight.active{left:0}
+.webpos_container .main-content{background:#fff}
+.webpos_container .main-content ul{list-style:none;padding:0 20%}
+.webpos_container .main-content ul li{text-align:center;font-size:16px;padding:10px}
+.webpos_container .main-content .email .customer-email{height:50px}
+.webpos_container .main-content .email .button-send-email{text-transform:uppercase;border:0 none;color:#fff;padding:8px 20px 5px;width:100%;height:50px;background:#6f7d90}
+#success_container .checkout-footer{height:100px}
+div.mage-error{color:red}
+#webpos_cart button.checkout.inactive{background:#6f7d90}
+#webpos_cart_discountpopup .popup-header.couponOnly{text-align:right;display:block}
+.pos_popup{position:fixed;z-index:9999}
+#popup-edit-product .btn,#webpos_cart_discountpopup .btn,.popup-for-right .actions .custom-price,.popup-for-right .actions .discount{background:#e1e1e1;color:#48586c;line-height: 35px!important;height: 35px!important;padding: 0 12px;}
+#popup-edit-product .btn.btn-cl-cfg-active,#webpos_cart_discountpopup .btn.btn-cl-cfg-active,.popup-for-right .actions .discount.btn-cl-cfg-active,.popup-for-right .actions .custom-price.btn-cl-cfg-active{color:#fff;height:inherit}
+#popup-edit-product,#webpos_cart_discountpopup{opacity:1!important}
+#webpos_cart_discountpopup{top:initial!important}
+button:active,button:focus{outline:none;outline:0}
+.wrap-success-content{padding-top:40px}
+.wrap-success-content .top-text{text-align:center;font-size:18px;color:#3c4857}
+.wrap-success-content .top-text .icon-iconPOS-success{font-size:100px}
+.wrap-success-content .top-text .notify-order{margin-top:40px;margin-bottom:40px}
+.wrap-success-content .submit-email{width:417px;margin:0 auto}
+.wrap-success-content .submit-email input{color:#9da4a2;font-size:14px;border-radius:2px;width:100%;height:50px;line-height:50px;border:1px solid #d7d7d7;padding:0 10px}
+.wrap-success-content .submit-email button{border-radius:2px;width:100%;height:50px;line-height:50px;border:0 none;background:#6f7d90;text-transform:uppercase;font-size:15px;color:#fff;padding:inherit}
+.btn-print{text-transform:uppercase;border:0 none;color:#fff;padding:8px 20px 5px;width:150px;height:50px;background:#6f7d90}
+.checkout-footer .right-align{text-align:right}
+.checkout-footer .btn-new-order{width:150px!important}
+.show{display:block!important}
+.pos_modal .modal-dialog{z-index:10}
+.pos_modal .pos_overlay{z-index:5;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5)}
+#form-note-order .modal-dialog.on-checkout{margin:55px auto 0 175px}
+.modal-popup{left:0;overflow-y:auto;z-index:900}
+.modal-slide._show,.modal-popup._show{visibility:visible}
+.modal-slide,.modal-popup{bottom:0;left:0;min-width:0;position:fixed;right:0;top:0;background:rgba(0,0,0,0.5);visibility:hidden}
+.modal-popup.modal-system-messages .modal-inner-wrap{background:#fffbbb}
+.modal-popup._show .modal-inner-wrap{-webkit-transform:translateY(0);transform:translateY(0)}
+.modal-slide._show .modal-inner-wrap,.modal-popup._show .modal-inner-wrap{-webkit-transform:translate(0,0);transform:translate(0,0)}
+.modal-popup .modal-inner-wrap{box-sizing:border-box;height:auto;left:0;margin:5rem auto;position:absolute;right:0;-webkit-transform:translateY(-200%);transform:translateY(-200%);transition-duration:.2s;-webkit-transition-property:-webkit-transform,visibility;transition-property:transform,visibility;transition-timing-function:ease;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:75%;background:#fffbbb}
+.modal-slide .modal-inner-wrap,.modal-popup .modal-inner-wrap{background-color:#fff;box-shadow:0 0 12px 2px rgba(0,0,0,0.35);opacity:1;pointer-events:auto}
+.modal-popup .modal-header{padding-bottom:1.2rem;padding-top:3rem}
+.modal-popup .modal-header,.modal-popup .modal-footer{-webkit-flex-grow:0;flex-grow:0;-webkit-flex-shrink:0;flex-shrink:0}
+.modal-popup .action-close,.modal-slide .action-close{color: #9da4a2;position:absolute;right:0;top:0;z-index:1;padding:10px;font-size: 100%;font-weight: 400;}
+.modal-popup .action-secondary.action-dismiss{background:#6f7d90;width:100px;margin-right:5px;color:#fff}
+.modal-popup .action-primary.action-accept{background:#00a679;width:100px;border:0 none;color:#fff;padding:8px 20px 5px}
+.modal-popup .action-secondary.action-dismiss,
+.modal-popup .action-primary.action-accept{height:40px!important;line-height: 38px!important;padding:0!important;font-size: 100%!important;font-weight: normal!important;}
+.modal-popup .modal-title{font-size:2.4rem;margin-right:6.4rem}
+.modal-title{font-weight:400;margin-bottom:0;min-height:1em;line-height: 40px;}
+.modal-popup .action-close{padding:3rem;}
+.modal-popup .action-close,.modal-slide .action-close{color:#9da4a2;position:absolute;right:0;top:0;z-index:1;padding:10px}
+.modal-popup .modal-inner-wrap{width:400px;background:#fff}
+.abs-action-reset,.abs-action-delete,.action-close,.search-global-field._active .search-global-action,.notifications-close,.image .action-remove,.image-panel-controls .action-remove,.order-discounts .admin__field .action-default,.add-by-sku-wrapper .action-reset,.rma-items .col-actions .item_delete_line{background-color:transparent;border:none;border-radius:0;box-shadow:none;margin:0;padding:0}
+.action-default,button,.block-footer .action-add,.block-footer .action-add{background:#e3e3e3;border-color:#adadad;color:#514943}
+.abs-action-default,.mass-select-wrap select + label,button,.rma-items .col-actions .item_details,.rma-items .col-actions .item_split_line,.rma-items-block .col-actions a,.block-footer .action-add{background:#e3e3e3;border-color:#adadad;color:#3c3a39}
+.abs-action-pattern,.abs-action-default,.abs-action-primary,.abs-action-secondary,.abs-action-tertiary,.abs-action-quaternary,.action-default,button,.action-primary,.action-secondary,.action-tertiary,.action-quaternary,.mass-select-wrap select + label,button,button.primary,button.secondary,button.tertiary,.ui-dialog .action-close,.ui-dialog .ui-button,.ui-dialog .action-primary,.attribute-popup-actions .action-default.reset,.attribute-popup-actions .page-actions-buttons > button.action-default.primary,.modal-popup .modal-footer .action-primary,.modal-popup .modal-footer .action-secondary,.page-actions > button,.page-actions .page-actions-buttons > button,.page-actions > button.action-primary,.page-actions .page-actions-buttons > button.action-primary,.page-actions > button.primary,.page-actions .page-actions-buttons > button.primary,.steps-wizard .select-attributes-actions .action-default,.downloadable-form .action-add,.rma-items .col-actions .item_details,.rma-items .col-actions .item_split_line,.rma-items-block .col-actions a,.field-vat-number .action-default,.order-shipping-method-summary .action-default,.order-shipping-method-info .action-default,.block-footer .action-add,.block-footer .action-add,.popup-window .magento_buttons .ok_button,.popup-window .magento_buttons .cancel_button,.fade .actions .primary,.fade .actions .cancel,.block-footer .action-add,.block-footer .action-add.primary,.block-footer .action-add.secondary,.block-footer .action-add.tertiary,.attribute-popup-actions .page-actions-buttons > .block-footer .action-add.action-default.primary,.page-actions > .block-footer .action-add,.page-actions .page-actions-buttons > .block-footer .action-add,.page-actions > .block-footer .action-add.action-primary,.page-actions .page-actions-buttons > .block-footer .action-add.action-primary,.page-actions > .block-footer .action-add.primary,.page-actions .page-actions-buttons > .block-footer .action-add.primary{border:1px solid;border-radius:0;display:inline-block;font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:1.4rem;font-weight:600;line-height:2;padding:.6rem 1em;text-align:center;vertical-align:baseline}
+.message-system-list{list-style:none;margin:0;padding:0}
+.order-errors .admin__fieldset-wrapper .title{background:#fffbbb;border:none;border-radius:0;color:#333;font-size:1.4rem;margin:0 0 1px;padding:1.8rem 4rem 1.8rem 5.5rem;position:relative;text-shadow:none}
+.modal-inner-wrap{background:#fffbbb}
+.modal-popup .modal-content{border:none;box-shadow:none;padding:10px;background:#fff}
+.admin-account{padding:0}
+.admin-account .admin-name{font-size:18px;color:#fff;font-weight:400;margin:0;padding:10px 20px 0;background:#202835}
+.admin-account .admin-add{font-size:13px;color:#6f7d90;font-weight:400;padding:10px 20px;margin:0;background:#202835}
+.admin-account .logout-box{padding:10px 20px}
+.admin-account .logout-box a{color:#fff;font-size:15px;text-decoration:none;display:inline-block;vertical-align:middle}
+.admin-account .logout-box a:hover,.admin-account .logout-box a:focus,.admin-account .logout-box a:hover span,.admin-account .logout-box a:focus span{color:#fff!important}
+.admin-account .logout-box a [class*='icon-ico']{margin-right:21px;display:inline-block;vertical-align:middle}
+.main-item-order .order-checkout .item .item-options{font-size:.7vw}
+.loader{position:absolute;top:calc(50vh - 32px);left:calc(50vw - 32px);z-index:999;width:64px;height:64px}
+#checkout-loader{display:block;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000}
+
+.clear{clear:both}
+
+.product-loader {
+    background-image: url("../images/AjaxLoader.gif");
+    width: 80px;
+    height: 80px;
+    display: block;
+    position:absolute;
+    top: calc(50% - 100px);
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+}
+.pagination:hover {
+    box-shadow: none;
+}
+
+
+.o-wrapper .container{
+    padding: 0px;
+}
+.o-wrapper .container .show-menu-button,
+.o-wrapper .container .c-button{
+    z-index: 100;
+    border: none;
+}
+.o-wrapper .container .show-menu-button{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0;
+}
+

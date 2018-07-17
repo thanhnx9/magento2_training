@@ -1,0 +1,6 @@
+<!-- ko if: data.is_display == 1 -->
+<li class="c-menu__item">
+    <span aria-hidden="true" data-bind="css:data.icon_class"></span>
+    <a class="c-menu__link" data-bind="text: data.title, attr:{id:data.id}, click:itemClick"></a>
+</li>
+<!-- /ko -->

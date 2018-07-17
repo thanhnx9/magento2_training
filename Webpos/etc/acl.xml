@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magestore_Webpos::main_menu" title="Magestore" sortOrder="10">
+                    <resource id="Magestore_Webpos::webpos" title="Webpos" sortOrder="10">
+                        <resource id="Magestore_Webpos::checkout" title="Checkout" sortOrder="20" />
+                        <resource id="Magestore_Webpos::staff" title="Staff Management" sortOrder="20" />
+                        <resource id="Magestore_Webpos::settings" title="Settings" sortOrder="20" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magestore_Webpos::config_webpos" title="Webpos" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

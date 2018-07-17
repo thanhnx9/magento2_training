@@ -1,0 +1,66 @@
+<!-- ko if: customerData().email -->
+<header class="o-header">
+    <nav class="o-header-nav">
+        <h3 class="customer-name"><label class="title-header-page" data-bind="text: customerData().firstname + ' ' + customerData().lastname"></label></h3>
+    </nav>
+</header>
+<main class="main-content">
+    <form class="panel-group customer-info" id="customer-edit-form">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 data-bind="i18n: 'Customer Information'"></h5>
+                <button type="submit" class="action-edit action btn-cl-cfg-other"
+                        data-bind="click: saveInformation,i18n: 'Save'"></button>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="customer-fname customer-info">
+                            <label for="customer_firstname" data-bind="i18n: 'First name:'"></label>
+                            <div class="input-box">
+                                <input data-bind="value: currentFirstName" data-validate="{'required-entry':true}" name="customer_firstname" id="customer_firstname" />
+                                <em>*</em>
+                            </div>
+                        </div>
+                        <div class="customer-lname customer-info">
+                            <label for="customer_lastname" data-bind="i18n: 'Last name:'"></label>
+                            <div class="input-box">
+                                <input data-bind="value: currentLastName" data-validate="{'required-entry':true}" name="customer_lastname" id="customer_lastname" />
+                                <em>*</em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="customer-email customer-info">
+                            <label for="customer_email" data-bind="i18n: 'Email:'"></label>
+                            <div class="input-box">
+                                <input data-bind="value: currentEmail" data-validate="{'required-entry':true, 'validate-email': true}" name="customer_email" id="customer_email"  />
+                                <em>*</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+<!--/ko-->
+
+<!-- ko ifnot: customerData().email -->
+<div class="col-sm-12 col-left">
+    <header class="o-header">
+        <nav class="o-header-nav">
+            <span></span>
+            <label class="title" data-bind="i18n: 'Customer Detail'"></label>
+            <span></span>
+        </nav>
+    </header>
+    <main class="main-content main-content-no-order">
+        <div class="pos-machine icon-info"></div>
+        <div class="text-note">
+            <span class="icon-iconPOS-empty-customer" id="empty-customer"></span>
+            <h3 class="title-box" data-bind="i18n: 'You don\'t have any customers yet'"></h3>
+        </div>
+    </main>
+</div>
+<!-- /ko -->

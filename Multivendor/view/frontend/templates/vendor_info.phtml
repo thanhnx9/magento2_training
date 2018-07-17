@@ -1,0 +1,11 @@
+<?php /* @var Magestore\Multivendor\Block\VendorInfo $block*/?>
+<?php $vendorModel = $block->getVendorModel();?>
+<?php if ($vendorModel) { ?>
+    <a href="<?php echo $block->getUrl('multivendor/vendor/view') . 'id/' . $vendorModel->getId(); ?>">
+        <p id="vendor_name"><?php echo $vendorModel->getData('name'); ?></p>
+        <?php
+        $img = $block->getMediaUrlImage($vendorModel->getLogo());
+        ?>
+        <img width="60px" height="60px" src="<?php echo $img; ?>" alt="<?php echo $vendorModel->getName();?>"
+    </a>
+<?php } ?>

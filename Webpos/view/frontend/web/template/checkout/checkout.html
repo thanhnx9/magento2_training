@@ -1,0 +1,61 @@
+<div id="webpos_checkout" class="col-sm-8 col-left">
+    <header class="o-header checkout-header">
+        <div class="price-box">
+            <span class="price" data-bind="text:cartTotal()"></span>
+        </div>
+    </header>
+    <main class="main-content" data-bind="afterRender: afterRenderCheckout">
+        <div class="wrap-list-product">
+            <div class="panel-group" id="checkout-method">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#checkout-method"  href="#shipping-method" data-bind="text:shippingHeader"></a>
+                        </h4>
+                    </div>
+                    <div id="shipping-method" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <!-- ko foreach: getRegion('webpos.checkout.shipping') -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#checkout-method" aria-expanded="true" href="#payment-method" data-bind="i18n:'Payment'"></a>
+                        </h4>
+                    </div>
+                    <div id="payment-method" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <!-- ko foreach: getRegion('webpos.checkout.payment') -->
+                            <!-- ko template: getTemplate() --><!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="checkout-footer">
+        <div class="wrap-footer">
+            <ul>
+                <li class="actions">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button id="checkout_button" class="checkout-actions button btn-cl-cfg-active" data-bind="click:placeOrder,text:checkoutButtonLabel"></button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!-- ko foreach: getRegion('webpos.checkout.success') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+    <div class="indicator" data-bind="visible:loading">
+        <div class="spinner"></div>
+    </div>
+</div>

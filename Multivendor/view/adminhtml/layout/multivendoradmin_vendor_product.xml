@@ -1,0 +1,16 @@
+<?xml version="1.0"  ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" >
+    <update handle="formkey"/>
+    <container name="root">
+        <block class="Magestore\Multivendor\Block\Adminhtml\Vendor\Edit\Tab\Product"
+        name="vendor.edit.tab.product"/>
+        <block class="Magento\Backend\Block\Widget\Grid\Serializer" name="product_grid_serializer">
+            <arguments>
+                <argument name="grid_block" xsi:type="string">vendor.edit.tab.product</argument>
+                <argument name="callback" xsi:type="string">getSelectedProduct</argument>
+                <argument name="input_element_name" xsi:type="string">in_products</argument>
+                <argument name="reload_param_name" xsi:type="string">products_vendor</argument>
+            </arguments>
+        </block>
+    </container>
+</page>

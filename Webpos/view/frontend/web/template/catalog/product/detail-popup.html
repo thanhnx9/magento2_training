@@ -1,0 +1,82 @@
+<div id="popup-product-detail" class="modal fade customer-popup-form" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <!--<div data-bind="text: ko.toJSON(itemData, null, 2)"></div>-->
+        <div class="modal-content">
+            <div class="form-detail-product">
+                <div class="popup-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            data-bind="click: closeDetailPopup, i18n: 'Cancel'"></button>
+                    <h4 class="modal-title" data-bind="i18n: 'Product Details'"></h4>
+                    <span class="actions"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="screen-shoot-detail">
+                                    <div id="product-img-slise" class="owl-carousel">
+                                        <div class="item">
+                                            <div class="img-cat">
+                                                <a href="#">
+                                                    <img data-bind="attr: {'src': itemData().image}"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="config-product">
+                                    <div class="product-info-main">
+                                        <div class="page-title-wrapper product">
+                                            <h3 class="product-name" data-bind="html: itemData().name"></h3>
+                                            <span class="sku" data-bind="text: itemData().sku"></span>
+                                        </div>
+                                        <div class="price">
+                                            <span class="final-price price"  data-bind="text: formatPrice(itemData().price)"></span>
+                                        </div>
+                                        <div class="availability">
+                                            <!-- ko if: isShowAvailableQty() -->
+                                            <span data-bind="i18n: 'Availability: '"></span>
+                                            <span class="available_qty"
+                                                  data-bind="text: itemData().stock"></span>
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ko  ifnot: itemData().isShowOutStock -->
+                                <div class="ms-qty">
+                                    <label>Qty: </label>
+                                    <span class="down" data-bind="click: descQty"> - </span>
+                                    <!--data-bind="textInput:getQtyAddToCart(), hasFocus:focusQtyInput, event:{change:modifyQty}"-->
+                                    <input id="product_qty"
+                                           value="1"
+                                           name="product_qty"
+                                           onfocus="this.select()"/>
+                                    <span class="up" data-bind="click:incQty"> + </span>
+                                </div>
+                                <div class="ms-actions">
+                                    <button class="actions btn-cl-cfg-active"
+                                            data-bind="click: prepareAddToCart(itemData()), text: $t('Add to cart')"></button>
+                                </div>
+                                <!--/ko -->
+                                <!-- ko if: itemData().isShowOutStock -->
+                                <div data-bind="i18n: 'Out of stock'"></div>
+                                <!-- /ko -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="Description">
+                                    <h4 class="title-box" data-bind="i18n: 'Description'"></h4>
+                                    <p data-bind="html: itemData().description"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

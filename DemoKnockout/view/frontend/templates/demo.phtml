@@ -1,0 +1,20 @@
+<div id='demo-div' data-bind="scope:'demo'">
+    <a>Hien thi roi kia......</a>
+
+<!-- ko template: getTemplate() --><!-- /ko -->
+<script type="text/x-magento-init">
+    {
+    "#demo-div": {
+    "Magento_Ui/js/core/app": {
+          "components" : {
+             "demo": {
+                  "component": "Magestore_DemoKnockout/js/view/demo",
+                   "displayArea": "demo"
+              }
+          }
+       }
+    }
+    }
+</script>
+
+</div>

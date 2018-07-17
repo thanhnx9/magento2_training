@@ -1,0 +1,16 @@
+<div data-bind="text: ko.toJSON(items, null, 2)"></div>
+<form data-bind="foreach: items">
+    <div class="input-box">
+        <input type="radio" name="shipping_method"
+               data-bind="attr:{'id': code},
+                          value: code,
+                          checked: $parent.isSelected,
+                          event:{'change': $parent.setShippingMethod}">
+        <label data-bind="click: $parent.setShippingMethod">
+            <span class="wrap-label">
+                <em data-bind="text: title"></em>
+                <em data-bind="text: $parent.formatPrice(price)"></em>
+            </span>
+        </label>
+    </div>
+</form>
