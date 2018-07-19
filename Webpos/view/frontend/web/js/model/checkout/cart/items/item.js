@@ -39,11 +39,13 @@ define(
 
                 self.row_total = ko.pureComputed(function () {
                     var rowTotal = self.qty() * self.unit_price();
+                    console.log(rowTotal);
                     return rowTotal;
                 });
 
                 self.row_total_formated = ko.pureComputed(function () {
                     var rowTotal = self.row_total();
+                    console.log("Vao row_total: "+rowTotal);
                     return PriceUtils.formatPrice(rowTotal, window.webposConfig.priceFormat);
                 });
             },

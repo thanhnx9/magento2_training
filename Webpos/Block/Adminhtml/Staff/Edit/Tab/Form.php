@@ -112,13 +112,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ));
         }
 
-//        $fieldset->addField('customer_group', 'multiselect', array(
-//            'label' => __('Customer Group'),
-//            'class' => 'required-entry',
-//            'required' => true,
-//            'name' => 'customer_group',
-//            'values' => $this->_objectManager->get('Magestore\Webpos\Model\Source\Adminhtml\CustomerGroup')->toOptionArray()
-//        ));
+        $fieldset->addField('customer_group', 'multiselect', array(
+            'label' => __('Customer Group'),
+            'class' => 'required-entry',
+            'required' => true,
+            'name' => 'customer_group',
+            'values' => $this->_objectManager->get('Magestore\Webpos\Model\Source\Adminhtml\CustomerGroup')->toOptionArray()
+        ));
 
         $fieldset->addField('status', 'select', array(
             'label' => __('Status'),

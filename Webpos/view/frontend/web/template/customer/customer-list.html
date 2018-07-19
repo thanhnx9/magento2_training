@@ -15,9 +15,9 @@
     </header>
     <!-- -->
     <div class="main-item-order">
-        <div class="wrap-item-order wrap-item-customer scroll-grid">
+        <div class="wrap-item-order wrap-item-customer scroll-grid" data-bind="event: {scroll: lazyload}" }>
             <ul class="list-customer" data-bind="foreach: customers">
-                <li class="product-item bg-cl-active" data-bind="attr: {id: id}">
+                <li class="product-item bg-cl-active" data-bind="attr: {id: id} , click: $parent.loadCustomer">
                     <div class="item">
                         <h4 class="customer-name" data-bind="text: firstname+ ' '+ lastname"></h4>
                         <a class="customer-email" data-bind="text: email"></a>

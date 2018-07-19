@@ -30,9 +30,11 @@ define(
                 var self = this;
                 $.each(self.initFields, function(index, fieldKey){
                     self[fieldKey] = ko.observable((typeof data[fieldKey] != "undefined")?data[fieldKey]:'');
+                    console.log(self[fieldKey]);
                 });
                 self.valueFormated = ko.pureComputed(function(){
                     var value = self.value();
+                    console.log("TIEN LA: "+value);
                     return PriceUtils.formatPrice(value, window.webposConfig.priceFormat);
                 });
 

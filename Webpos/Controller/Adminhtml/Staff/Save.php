@@ -40,7 +40,7 @@ class Save extends Staff
 //        }
 
         try {
-            //$model->setData('customer_group', implode(',', $model->getData('customer_group')));
+            $model->setData('customer_group', implode(',', $model->getData('customer_group')));
             $model->save();
             $this->messageManager->addSuccess(__('Staff was successfully saved'));
         }catch (\Exception $e) {

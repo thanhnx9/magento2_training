@@ -1,7 +1,9 @@
 <!-- ko if: customerData().email -->
 <header class="o-header">
     <nav class="o-header-nav">
-        <h3 class="customer-name"><label class="title-header-page" data-bind="text: customerData().firstname + ' ' + customerData().lastname"></label></h3>
+        <h3 class="customer-name"><label class="title-header-page"
+                                         data-bind="text: customerData().firstname + ' ' + customerData().lastname"></label>
+        </h3>
     </nav>
 </header>
 <main class="main-content">
@@ -18,14 +20,16 @@
                         <div class="customer-fname customer-info">
                             <label for="customer_firstname" data-bind="i18n: 'First name:'"></label>
                             <div class="input-box">
-                                <input data-bind="value: currentFirstName" data-validate="{'required-entry':true}" name="customer_firstname" id="customer_firstname" />
+                                <input data-bind="value: currentFirstName" data-validate="{'required-entry':true}"
+                                       name="customer_firstname" id="customer_firstname"/>
                                 <em>*</em>
                             </div>
                         </div>
                         <div class="customer-lname customer-info">
                             <label for="customer_lastname" data-bind="i18n: 'Last name:'"></label>
                             <div class="input-box">
-                                <input data-bind="value: currentLastName" data-validate="{'required-entry':true}" name="customer_lastname" id="customer_lastname" />
+                                <input data-bind="value: currentLastName" data-validate="{'required-entry':true}"
+                                       name="customer_lastname" id="customer_lastname"/>
                                 <em>*</em>
                             </div>
                         </div>
@@ -34,7 +38,19 @@
                         <div class="customer-email customer-info">
                             <label for="customer_email" data-bind="i18n: 'Email:'"></label>
                             <div class="input-box">
-                                <input data-bind="value: currentEmail" data-validate="{'required-entry':true, 'validate-email': true}" name="customer_email" id="customer_email"  />
+                                <input data-bind="value: currentEmail"
+                                       data-validate="{'required-entry':true, 'validate-email': true}"
+                                       name="customer_email" id="customer_email"/>
+                                <em>*</em>
+                            </div>
+                        </div>
+
+                        <div class="customer-group customer-info">
+                            <label for="customer_group" data-bind="il8n: 'Group:'">Group: </label>
+                            <div class="input-box">
+                                <input data-bind="value: currentGroupId"
+                                       data-validate="{'required-entry':true, 'validate-group': true}"
+                                       name="customer_group" id="customer_group" readonly="readonly"/>
                                 <em>*</em>
                             </div>
                         </div>

@@ -152,14 +152,14 @@ class InvoiceRepository extends \Magento\Sales\Model\Order\InvoiceRepository imp
             $order->save();
         }else{
             $invoice = $this->invoiceService->prepareInvoice($order, $invoiceItems);
-            /*
+
             if($invoice->getBaseGrandTotal()>$order->getTotalDue()){
                 $invoice->setBaseGrandTotal($order->getBaseTotalDue());
                 $invoice->setGrandTotal($order->getTotalDue());
                 $invoice->setBaseSubtotal($invoice->getBaseGrandTotal()+$invoice->getBaseDiscountAmount()-$invoice->getBaseShippingAmount());
                 $invoice->setSubtotal($invoice->getGrandTotal()+$invoice->getDiscountAmount()-$invoice->getShippingAmount());
             }
-             */
+
         }
         
 

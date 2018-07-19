@@ -67,8 +67,14 @@ define([
             var params = {};
             var serviceUrl = urlBuilder.createUrl('/webpos/customers?searchCriteria[pageSize]='+this.pageSize+
                 '&searchCriteria[filterGroups][0][filters][0][field]=email' +
-                '&searchCriteria[filterGroups][0][filters][0][value]=%'+searchKey+'%'+
-                '&searchCriteria[filterGroups][0][filters][0][conditionType]=like'
+                '&searchCriteria[filterGroups][0][filters][0][value]=%25'+searchKey+'%25'+
+                '&searchCriteria[filterGroups][0][filters][0][conditionType]=like'+
+                '&searchCriteria[filterGroups][0][filters][1][field]=firstname' +
+                '&searchCriteria[filterGroups][0][filters][1][value]=%25'+searchKey+'%25'+
+                '&searchCriteria[filterGroups][0][filters][1][conditionType]=like'+
+                '&searchCriteria[filterGroups][0][filters][2][field]=lastname' +
+                '&searchCriteria[filterGroups][0][filters][2][value]=%25'+searchKey+'%25'+
+                '&searchCriteria[filterGroups][0][filters][2][conditionType]=like'
                 , params);
             var payload = {};
             storage.get(

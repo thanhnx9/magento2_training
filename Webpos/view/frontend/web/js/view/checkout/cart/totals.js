@@ -22,8 +22,10 @@ define([
         isOnCheckoutPage: ko.pureComputed(function(){
             return (CartModel.currentPage() == CartModel.PAGE.CHECKOUT)?true:false;
         }),
-        totals: Totals.totals,
+        totals: Totals.totals
+        ,
         backToCart: function(){
+            console.log("backToCart....");
             Event.dispatch('go_to_cart_page', '', true);
         },
         saveCart: function(){

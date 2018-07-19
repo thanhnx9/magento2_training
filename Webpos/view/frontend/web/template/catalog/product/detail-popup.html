@@ -31,10 +31,15 @@
                                     <div class="product-info-main">
                                         <div class="page-title-wrapper product">
                                             <h3 class="product-name" data-bind="html: itemData().name"></h3>
-                                            <span class="sku" data-bind="text: itemData().sku"></span>
+                                            <div class="product-attribute-sku">
+                                                <span class="pro">SKU#: </span>
+                                                <span class="sku" data-bind="text: itemData().sku"></span>
+                                            </div>
                                         </div>
                                         <div class="price">
-                                            <span class="final-price price"  data-bind="text: formatPrice(itemData().price)"></span>
+                                            <span id="old-price-6-widget-product-grid"
+                                                  data-bind="text: formatPrice(itemData().price)"
+                                                  data-price-type="finalPrice" class="price-wrapper "></span>
                                         </div>
                                         <div class="availability">
                                             <!-- ko if: isShowAvailableQty() -->
@@ -68,7 +73,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="Description">
+                                <div getId="Description">
                                     <h4 class="title-box" data-bind="i18n: 'Description'"></h4>
                                     <p data-bind="html: itemData().description"/>
                                 </div>
