@@ -83,6 +83,7 @@ define(
                     var item = new Item();
                     item.init(data);
                     this.items.push(item);
+                    console.log("Item added: "+item);
                 }else{
                     var qty = item.qty();
                     qty += data.qty;
@@ -168,7 +169,6 @@ define(
                             data.unit_price = parseFloat(unitPrice);
                             data.name = itemData.name;
                             data.qty = parseFloat(itemData.qty);
-                            console.log(data.qty);
                             data.saved_item = true;
                             var added = self.getAddedItem({item_id: itemData.offline_item_id}) || self.getAddedItem({item_id: itemId});
                             if(added === false){

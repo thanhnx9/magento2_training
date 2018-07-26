@@ -1,7 +1,7 @@
 <route url="/V1/webpos/products" method="GET">
     <service class="Magestore\Webpos\Api\Catalog\ProductRepositoryInterface" method="getList"/>
     <resources>
-        <!--<resource ref="anonymous" />-->
-        <resource ref="Magestore_Webpos::webpos" />
+        <resource ref="anonymous" />
+        <!--<resource ref="Magestore_Webpos::webpos" />-->
     </resources>
 </route>

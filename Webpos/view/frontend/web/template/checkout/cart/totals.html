@@ -1,22 +1,21 @@
 <div class="grand-total-footer">
     <div class="wrap-grand-total">
         <ul>
-            ko foreach: totals()
+            <!--ko foreach: totals()-->
             <li>
                 <div class="label">
-                    <!--<label class="title"-->
-                        <!--data-bind="text:$data.title()">-->
-                    <!--</label>-->
-                    <label class="title">Thanh</label>
+                    <!--ko text: console.log($data)--><!--/ko-->
+                    <label class="title"
+                        data-bind="text:$data.title">
+                    </label>
                 </div>
                 <div class="price-box">
-                    <!--<span class="price"-->
-                        <!--data-bind="text:$data.valueFormated()">-->
-                    <!--</span>-->
-                    <span class="price">yays</span>
+                    <span class="price"
+                        data-bind="text:$data.valueFormated()">
+                    </span>
                 </div>
             </li>
-            /ko
+            <!--/ko-->
             <li class="action-button" data-bind="visible:isOnCartPage">
                 <button class="button checkout btn-cl-cfg-active" data-bind="i18n:'Checkout', click:saveCart"></button>
             </li>

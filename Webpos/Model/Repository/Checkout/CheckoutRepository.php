@@ -35,7 +35,14 @@ class CheckoutRepository implements \Magestore\Webpos\Api\Checkout\CheckoutRepos
      * @var \Magento\Sales\Api\OrderRepositoryInterface
      */
     protected $_orderRepository;
-
+    /**
+     * @var \Magestore\Webpos\Api\Data\Checkout\ShippingDataInterfaceFactory
+     */
+    protected $_shippingData;
+    /**
+     * @var \Magestore\Webpos\Api\Data\Checkout\PaymentDataInterface
+     */
+    protected $_paymentData;
     /**
      * CheckoutRepository constructor.
      * @param ResponseInterface $responseModelData
@@ -44,14 +51,19 @@ class CheckoutRepository implements \Magestore\Webpos\Api\Checkout\CheckoutRepos
      * @param \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository
      * @param \Magento\Payment\Model\MethodList $paymentMethodList
      * @param \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
+     * @param \Magestore\Webpos\Api\Data\Checkout\ShippingDataInterfaceFactory $shippingData
+     * @param \Magestore\Webpos\Api\Data\Checkout\PaymentDataInterfaceFactory $paymentData
      */
+    //instance
     public function __construct(
         \Magestore\Webpos\Api\Data\Checkout\ResponseInterface $responseModelData,
         \Magestore\Webpos\Api\Data\Checkout\QuoteDataInterface $quoteModelData,
         \Magestore\Webpos\Model\AdminOrder\Create $orderCreateModel,
         \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository,
         \Magento\Payment\Model\MethodList $paymentMethodList,
-        \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
+        \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
+        \Magestore\Webpos\Api\Data\Checkout\ShippingDataInterfaceFactory $shippingData,
+        \Magestore\Webpos\Api\Data\Checkout\PaymentDataInterfaceFactory $paymentData
     ) {
         $this->_responseModelData = $responseModelData;
         $this->_quoteModelData = $quoteModelData;
@@ -59,6 +71,8 @@ class CheckoutRepository implements \Magestore\Webpos\Api\Checkout\CheckoutRepos
         $this->_customerRepository = $customerRepository;
         $this->_paymentMethodList = $paymentMethodList;
         $this->_orderRepository = $orderRepository;
+        $this->_shippingData=$shippingData;
+        $this->_paymentData=$paymentData;
     }
 
     /**
@@ -71,12 +85,12 @@ class CheckoutRepository implements \Magestore\Webpos\Api\Checkout\CheckoutRepos
      */
     public function saveCart($quoteId, $items, $customerId, $section){
         $customer = $this->_customerRepository->getById($customerId);
+
         $this->_orderCreateModel->start($quoteId);
         $this->_orderCreateModel->processItems($items,$quoteId);
-      // \Zend_Debug::dump( $this->_getQuoteItems());die;
+
         $this->_orderCreateModel->assignCustomer($customer);
-        $this->_orderCreateModel->finish($quoteId);
-     //   \Zend_Debug::dump($this->_getResponse(ResponseInterface::STATUS_SUCCESS, [], $section));die;
+        $this->_orderCreateModel->finish();
 
         return $this->_getResponse(ResponseInterface::STATUS_SUCCESS, [], $section);
 
@@ -277,17 +291,11 @@ class CheckoutRepository implements \Magestore\Webpos\Api\Checkout\CheckoutRepos
                 $methodCode = $rate->getCode();
                 $methodTitle = $rate->getCarrierTitle().' - '.$rate->getMethodTitle();
                 $methodPrice = ($rate->getPrice() != null) ? $rate->getPrice() : '0';
-
-                $shippingList[] = [
-                    'code' => $methodCode,
-                    'title' => $methodTitle,
-                    'price' => $methodPrice
-                ];
+                $shipping=$this->_shippingData->create()->setCode($methodCode)->setTitle($methodTitle)->setPrice($methodPrice);
+                $shippingList[] = $shipping;
             }
         }
-    //    \Zend_Debug::dump($shippingList);
         return $shippingList;
-        //print_r($shippingList);
     }
 
     /**
@@ -299,10 +307,12 @@ class CheckoutRepository implements \Magestore\Webpos\Api\Checkout\CheckoutRepos
         $quote = $this->_orderCreateModel->getQuote();
         $methods =  $this->_paymentMethodList->getAvailableMethods($quote);
         foreach ($methods as $method) {
-            $paymentList[] = array(
-                'code' => $method->getCode(),
-                'title' => $method->getTitle(),
-            );
+//            $paymentList[] = array(
+//                'code' => $method->getCode(),
+//                'title' => $method->getTitle(),
+//            );
+            $payment=$this->_paymentData->create()->setCode($method->getCode())->setTitle($method->getTitle());
+            $paymentList[]=$payment;
         };
         return $paymentList;
     }

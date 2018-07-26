@@ -30,24 +30,24 @@ interface QuoteDataInterface
     public function getQuoteId();
 
     /**
-     * @param array $shipping
+     * @param \Magestore\Webpos\Api\Data\Checkout\ShippingDataInterface[] $shipping
      * @return $this
      */
     public function setShipping($shipping);
 
     /**
-     * @return array
+     * @return \Magestore\Webpos\Api\Data\Checkout\ShippingDataInterface[]
      */
     public function getShipping();
 
     /**
-     * @param array $payment
+     * @param \Magestore\Webpos\Api\Data\Checkout\PaymentDataInterface[] $payment
      * @return $this
      */
     public function setPayment($payment);
 
     /**
-     * @return array
+     * @return \Magestore\Webpos\Api\Data\Checkout\PaymentDataInterface[]
      */
     public function getPayment();
 

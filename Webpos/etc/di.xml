@@ -64,4 +64,13 @@
     <preference for="Magestore\Webpos\Api\Sales\InvoiceRepositoryInterface"
                 type="Magestore\Webpos\Model\Sales\Order\InvoiceRepository"/>
     <!-- end invoice api -->
+    <!--shipping-->
+    <preference for="Magestore\Webpos\Api\Data\Checkout\ShippingDataInterface"
+                type="Magestore\Webpos\Model\Checkout\Shipping"/>
+    <!--end shipping -->
+
+    <!--Payment-->
+    <preference for="Magestore\Webpos\Api\Data\Checkout\PaymentDataInterface"
+                type="Magestore\Webpos\Model\Checkout\Payment"/>
+    <!--end payment -->
 </config>

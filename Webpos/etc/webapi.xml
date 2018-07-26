@@ -4,14 +4,15 @@
     <route url="/V1/webpos/staff/login" method="POST">
         <service class="Magestore\Webpos\Api\Staff\StaffRepositoryInterface" method="login"/>
         <resources>
-            <!--<resource ref="anonymous" />-->
-            <resource ref="Magestore_Webpos::webpos" />
+            <resource ref="anonymous" />
+            <!--<resource ref="Magestore_Webpos::webpos" />-->
         </resources>
     </route>
     <route url="/V1/webpos/staff/logout" method="POST">
         <service class="Magestore\Webpos\Api\Staff\StaffRepositoryInterface" method="logout"/>
         <resources>
-            <resource ref="Magestore_Webpos::webpos" />
+            <!--<resource ref="Magestore_Webpos::webpos" />-->
+            <resource ref="anonymous" />
         </resources>
     </route>
     <!-- End Staff api -->
@@ -26,16 +27,16 @@
     <route url="/V1/webpos/products" method="GET">
         <service class="Magestore\Webpos\Api\Catalog\ProductRepositoryInterface" method="getList"/>
         <resources>
-            <!--<resource ref="anonymous" />-->
-            <resource ref="Magestore_Webpos::webpos" />
+            <resource ref="anonymous" />
+            <!--<resource ref="Magestore_Webpos::webpos" />-->
         </resources>
     </route>
 
     <route url="/V1/webpos/products/get/:sku" method="GET">
         <service class="Magestore\Webpos\Api\Catalog\ProductRepositoryInterface" method="get"/>
         <resources>
-            <!--<resource ref="anonymous" />-->
-            <resource ref="Magestore_Webpos::webpos" />
+            <resource ref="anonymous" />
+            <!--<resource ref="Magestore_Webpos::webpos" />-->
         </resources>
     </route>
     <!-- end product api -->
@@ -43,7 +44,8 @@
     <route url="/V1/webpos/cart/save" method="POST">
         <service class="Magestore\Webpos\Api\Checkout\CheckoutRepositoryInterface" method="saveCart"/>
         <resources>
-            <resource ref="Magestore_Webpos::webpos" />
+            <!--<resource ref="Magestore_Webpos::webpos" />-->
+            <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/webpos/cart/removeCart" method="POST">

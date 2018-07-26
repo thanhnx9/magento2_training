@@ -54,18 +54,18 @@ define(
             focusQtyInput: function () {
                 return true;
             },
-            // qtyChanged: function () {
-            //     // var newQty = parseInt($('input[name="qty"]').val());
-            //     // if (isNaN(newQty)) {
-            //     //     $('input[name="qty"]').val('1');
-            //     //     newQty = 1;
-            //     // }
-            //     // if (newQty > 100) {
-            //     //     newQty = 100;
-            //     // }
-            //     // this.qty(parseInt(newQty));
-            //     // $('input[name="qty"]').val(newQty);
-            // },
+            qtyChanged: function () {
+                var newQty = parseInt($('input[name="product_qty"]').val());
+                if (isNaN(newQty)) {
+                    $('input[name="product_qty"]').val('1');
+                    newQty = 1;
+                }
+                if (newQty > 100) {
+                    newQty = 100;
+                }
+                this.qty(parseInt(newQty));
+                $('input[name="product_qty"]').val(newQty);
+            },
             prepareAddToCart: function (data) {
                 console.log(data);
                 var qty = document.getElementById("product_qty").value;

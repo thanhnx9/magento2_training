@@ -30,7 +30,7 @@ define(
                 var self = this;
                 $.each(self.initFields, function(index, fieldKey){
                     self[fieldKey] = ko.observable((typeof data[fieldKey] != "undefined")?data[fieldKey]:'');
-                    console.log(self[fieldKey]);
+                    console.log("TOTAL: "+self[fieldKey]+" va "+data[fieldKey]);
                 });
                 self.valueFormated = ko.pureComputed(function(){
                     var value = self.value();
@@ -44,24 +44,15 @@ define(
              * @param key
              * @param value
              */
-            // valueFormated: function(){
-            //     var value=this.value();
-            //     var price=PriceUtils.formatPrice(value, window.webposConfig.priceFormat);
-            //     document.getElementById('price').innerHTML=price;
-            //     console.log(price);
-            // },
-            setData: function(key,value){
-                console.log("set Data");
-                if(typeof this[key] != "undefined"){
-                    if(this.autoValue() == true){
-                        if(key == 'value'){
-                            this[key] = value;
-                        }
-                    }else{
-                        this[key](value);
-                    }
+            setData: function(key, value){
+                var self = this;
+                if($.type(key) == 'string') {
+                    self[key](value);
+                }else{
+                    $.each(key, function(index, val){
+                        self[index](val);
+                    });
                 }
-
             },
             /**
              * Get total data

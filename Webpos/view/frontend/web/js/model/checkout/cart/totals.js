@@ -22,7 +22,8 @@ define([
         initialize: function () {
             var self = this;
             self.initObserver();
-            console.log("asajsk");
+            console.log("MODEL TOTAL");
+
             return this;
         },
         /**
@@ -111,12 +112,15 @@ define([
          */
         processQuoteTotals: function(data){
             var self = this;
+            console.log("total data:"+ data);
             var total = new Total();
-            total.init({
-                code: data.code,
-                title: data.title,
-                value: data.value
-            });
+            // total.init({
+            //     code: data.code,
+            //     title: data.title,
+            //     value: data.value
+            // });
+            //Before data is a array String=> convert to array Object
+            total.init(JSON.parse(data));
             return total;
         }
     }

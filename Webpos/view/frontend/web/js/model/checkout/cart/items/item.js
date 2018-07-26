@@ -35,6 +35,7 @@ define(
                 var self = this;
                 $.each(self.initFields, function(index, fieldKey){
                     self[fieldKey] = ko.observable((typeof data[fieldKey] != "undefined")?data[fieldKey]:'');
+                    console.log(fieldKey);
                 })
 
                 self.row_total = ko.pureComputed(function () {
@@ -58,6 +59,7 @@ define(
                 var self = this;
                 if($.type(key) == 'string') {
                     self[key](value);
+                    console.log("key "+key+" value "+ value);
                 }else{
                     $.each(key, function(index, val){
                         self[index](val);

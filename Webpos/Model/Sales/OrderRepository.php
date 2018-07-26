@@ -192,7 +192,8 @@ class OrderRepository implements \Magestore\Webpos\Api\Sales\OrderRepositoryInte
             return;
         }
         $shippingAssignments = \Magento\Framework\App\ObjectManager::getInstance()->create(
-            '\Magestore\Webpos\Model\Sales\Order\ShippingAssignmentBuilder'
+            'Magento\Sales\Model\Order\ShippingAssignmentBuilder'
+            //'\Magestore\Webpos\Model\Sales\Order\ShippingAssignmentBuilder'
         );
         $shippingAssignments->setOrderId($order->getEntityId());
         $extensionAttributes->setShippingAssignments($shippingAssignments->create());

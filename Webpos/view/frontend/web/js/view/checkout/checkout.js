@@ -38,7 +38,7 @@ define(
                 }
 
                 if(!CheckoutModel.selectedShippingCode()){
-                    CheckoutModel.useWebposShipping();
+                  //  CheckoutModel.useWebposShipping();
                 }
 
                 if(!CartModel.hasQuote()){

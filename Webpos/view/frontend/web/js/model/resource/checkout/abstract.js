@@ -27,10 +27,8 @@ define(
                     serviceUrl, JSON.stringify(params)
                 ).done(
                     function (response) {
-                        alert("DONE");
                         deferred.resolve(response);
                         if(callBack) {
-                            alert("NEXT DONE");
                             Event.dispatch(callBack, {'response': response});
                         }
                     }

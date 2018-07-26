@@ -58,7 +58,7 @@
                                     <input id="product_qty"
                                            value="1"
                                            name="product_qty"
-                                           onfocus="this.select()"/>
+                                           onfocus="this.select()" data-bind="event: {change:qtyChanged}"/>
                                     <span class="up" data-bind="click:incQty"> + </span>
                                 </div>
                                 <div class="ms-actions">

@@ -63,8 +63,12 @@ define([
                 storage.put(
                     serviceUrl, JSON.stringify(payload)
                 ).done(function (response) {
-                    console.log(response);
-                }).fail(function (response) {
+                    console.log("RESPONSE"+response);
+                    console.log(customerData.firstname);
+                     // var parsedResponse = $.parseHTML(customerData);
+                     // var result = $(parsedResponse).find("#list-customer");
+                     // $('#list-customer').replaceWith(result);
+                    }).fail(function (response) {
 
                 }).always(function (response){
 

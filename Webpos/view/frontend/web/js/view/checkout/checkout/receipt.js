@@ -54,7 +54,7 @@ define(
                     {code:'total_paid',title:'Total Paid', required:true,  sortOrder: 50, isPrice: true},
                     {code:'total_due',title:'Total Due', required:true,  sortOrder: 60, isPrice: true}
                 ];
-                console.log(totalsCode);
+                console.log("totalsCode");
                 totalsCode.sort(function(a, b) {
                     if(!a.sortOrder){
                         a.sortOrder = 2;
