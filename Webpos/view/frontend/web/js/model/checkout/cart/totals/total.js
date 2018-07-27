@@ -30,7 +30,6 @@ define(
                 var self = this;
                 $.each(self.initFields, function(index, fieldKey){
                     self[fieldKey] = ko.observable((typeof data[fieldKey] != "undefined")?data[fieldKey]:'');
-                    console.log("TOTAL: "+self[fieldKey]+" va "+data[fieldKey]);
                 });
                 self.valueFormated = ko.pureComputed(function(){
                     var value = self.value();

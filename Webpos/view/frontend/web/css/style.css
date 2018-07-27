@@ -98,3 +98,17 @@ body.has-active-menu{overflow:hidden}
 @media all and (max-width: 660px) {
   #carbonads{display:none}
 }
+
+.order-click{
+  cursor: pointer;
+}
+.order-active{
+  background-color: #b5dbe9;
+}
+
+.customer-item{
+  cursor: pointer;
+}
+.customer-active{
+  background: #b5dbe9;
+}

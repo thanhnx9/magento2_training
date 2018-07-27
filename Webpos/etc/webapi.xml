@@ -95,7 +95,7 @@
         </resources>
     </route>
 
-     invoice api
+     <!--invoice api-->
     <route url="/V1/webpos/invoices/" method="POST">
         <service class="Magento\Sales\Api\InvoiceRepositoryInterface" method="save"/>
         <resources>

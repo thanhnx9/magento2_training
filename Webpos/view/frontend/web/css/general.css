@@ -1052,7 +1052,7 @@ div#order_more_payment_container {position: absolute;bottom: 100px;width: calc(1
 .order-pages .main-item-order .list-orders li{padding: 0 30px;    cursor: pointer;}
 .order-pages  .col-right {padding: 0;background: #eaedf1;}
 .order-pages  .col-left {background: #eaedf1;height:100vh;position:relative}
-.order-pages .main-item-order .list-orders li.selected{background:#00a679;color:#fff}
+.order-pages .main-item-order .list-orders li.selected{background:#ff7800;color:#fff}
 .order-pages .main-item-order .list-orders li .item{position:relative;padding: 10px 0; border-bottom: 1px solid #e9ecf2;}
 .order-pages .main-item-order .list-orders li:last-child .item{border-bottom:0 none;}
 .order-pages .main-item-order .list-orders li .item .price-date{text-align:right}

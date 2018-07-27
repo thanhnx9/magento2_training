@@ -27,9 +27,11 @@ define([
             var self = this;
             this._super();
             this.orderData = OrderView();
-            self.showList(1);
+            self.showList(1,event);
         },
         showList: function (pageNumber) {
+
+
             var self = this;
             var itemsOrder = [];
             var params = {};
@@ -99,7 +101,10 @@ define([
             var serviceUrl = urlBuilder.createUrl('/webpos/orders?searchCriteria[pageSize]='+this.pageSize+
                 '&searchCriteria[filterGroups][0][filters][0][field]=customer_firstname' +
                 '&searchCriteria[filterGroups][0][filters][0][value]=%'+searchKey+'%'+
-                '&searchCriteria[filterGroups][0][filters][0][conditionType]=like'
+                '&searchCriteria[filterGroups][0][filters][0][conditionType]=like'+
+            '&searchCriteria[filterGroups][0][filters][1][field]=customer_firstname' +
+            '&searchCriteria[filterGroups][0][filters][1][value]=%'+searchKey+'%'+
+            '&searchCriteria[filterGroups][0][filters][1][conditionType]=like'
                 , params);
             var payload = {};
             storage.get(
@@ -142,9 +147,22 @@ define([
                 self.isLoading = false;
             });
         },
-        loadOrder: function(data) {
+        loadOrder: function(data,event) {
+            $('.order-click').removeClass('order-active');
+            let thisItem=$(event.target);
+            if(thisItem.closest("li.order-click").length>0){
+                //nếu click vào cái con, thì bôi màu hết
+                thisItem.closest("li.order-click").addClass('order-active');
+            }else{
+                //nếu ko phải cái con thì thôi
+                thisItem.addClass('order-active');
+            }
+
             var self = this;
+            self.selectedOrder= ko.observable(null),
             OrderView().setData(data);
+            self.selectedOrder(data);
+            console.log(self.selectedOrder(data));
         },
         getGrandTotal: function (data) {
             return priceHelper.formatPrice(data.base_grand_total);
@@ -175,7 +193,7 @@ define([
                         items[self.groupDays.indexOf(day.toString())].orderItems.push(value);
                     }
                 }
-                if (self.selectedOrder() == value.entity_id) {
+                if (self.selectedOrder() === value.entity_id) {
                     self.currentItemIsExist = true;
                 }
             });

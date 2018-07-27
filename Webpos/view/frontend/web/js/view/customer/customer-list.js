@@ -34,6 +34,7 @@ define([
         },
 
         showList: function (pageNumber) {
+
             var self = this;
             var params = {};
             this.customerView=CustomerView();
@@ -99,9 +100,19 @@ define([
             var curPage = this.curPage() + 1;
             this.showList(curPage);
         },
-        loadCustomer: function (data) {
+        loadCustomer: function (data,event) {
+            $('.customer-item').removeClass('customer-active');
+            var thisItem = $(event.target);
+            if(thisItem.closest("li.customer-item").length>0){
+                //nếu click vào cái con, thì bôi màu hết
+                thisItem.closest("li.customer-item").addClass('customer-active');
+            }else{
+                //nếu ko phải cái con thì thôi
+                thisItem.addClass('customer-active');
+            }
             CustomerView().setData(data);
-        }
+        },
+
 
 
     });
