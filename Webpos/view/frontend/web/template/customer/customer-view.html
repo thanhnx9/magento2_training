@@ -1,7 +1,7 @@
 <!-- ko if: customerData().email -->
 <header class="o-header">
     <nav class="o-header-nav">
-        <h3 class="customer-name"><label class="title-header-page"
+        <h3  class="customer-name"><label id="customer-title" class="title-header-page"
                                          data-bind="text: customerData().firstname + ' ' + customerData().lastname"></label>
         </h3>
     </nav>
@@ -11,7 +11,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h5 data-bind="i18n: 'Customer Information'"></h5>
-                <button type="submit" class="action-edit action btn-cl-cfg-other"
+                <button id="save-btn" type="submit" class="action-edit action btn-cl-cfg-other"
                         data-bind="click: saveInformation,i18n: 'Save'"></button>
             </div>
             <div class="panel-body">

@@ -21,14 +21,8 @@
                 <div class="title-time time-one" data-bind="text: $parent.formatDateGroup(day)"></div>
                 <ul class="list-orders" data-bind="foreach: orderItems">
 
-                    <li data-bind="attr: {class: 'order-item bg-cl-active order-click ' + status}, click: $parents[1].loadOrder,
-                        css: {'selected': $parents[1].selectedOrder()==$data}">
-                        <!--ko text: console.log($data)-->
-                        <!--/ko-->
-                        <!--ko text: console.log($data==$parents[1].selectedOrder())-->
-                        <!--/ko-->
-                        <!--ko text: console.log($parents[1].selectedOrder())-->
-                        <!--/ko-->
+                    <li data-bind="attr: {class: 'order-item bg-cl-active order-click ' + status}, click: $parents[1].loadOrder.bind($parents[1]),
+                        css: {'selected': entity_id==$parents[1].isOrderSelected()}">
                         <label data-bind="text: entity_id"></label>
                         <div class="item">
                             <div class="id-order">

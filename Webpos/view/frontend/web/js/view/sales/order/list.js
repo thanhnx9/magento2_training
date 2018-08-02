@@ -22,12 +22,12 @@ define([
         pageSize: 1000,
         numberOfPage: ko.observable(1),
         curPage: ko.observable(1),
-
+        isOrderSelected: ko.observable(''),
         initialize: function () {
             var self = this;
             this._super();
             this.orderData = OrderView();
-            self.showList(1,event);
+            self.showList(1);
         },
         showList: function (pageNumber) {
 
@@ -147,22 +147,18 @@ define([
                 self.isLoading = false;
             });
         },
-        loadOrder: function(data,event) {
-            $('.order-click').removeClass('order-active');
-            let thisItem=$(event.target);
-            if(thisItem.closest("li.order-click").length>0){
-                //nếu click vào cái con, thì bôi màu hết
-                thisItem.closest("li.order-click").addClass('order-active');
-            }else{
-                //nếu ko phải cái con thì thôi
-                thisItem.addClass('order-active');
-            }
-
-            var self = this;
-            self.selectedOrder= ko.observable(null),
+        loadOrder: function(data) {
+            // $('.order-click').removeClass('order-active');
+            // let thisItem=$(event.target);
+            // if(thisItem.closest("li.order-click").length>0){
+            //     //nếu click vào cái con, thì bôi màu hết
+            //     thisItem.closest("li.order-click").addClass('order-active');
+            // }else{
+            //     //nếu ko phải cái con thì thôi
+            //     thisItem.addClass('order-active');
+            // }
+            this.isOrderSelected(data.entity_id);
             OrderView().setData(data);
-            self.selectedOrder(data);
-            console.log(self.selectedOrder(data));
         },
         getGrandTotal: function (data) {
             return priceHelper.formatPrice(data.base_grand_total);

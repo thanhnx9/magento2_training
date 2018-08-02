@@ -4,59 +4,27 @@ define([
     'mage/storage',
     'ko',
     'Magestore_Webpos/js/model/url-builder',
-    'Magestore_Webpos/js/view/customer/customer-view'
-], function ($, Component, storage, ko, urlBuilder, CustomerView) {
+    'Magestore_Webpos/js/view/customer/customer-view',
+    'Magestore_Webpos/js/model/customers/customer',
+    'Magestore_Webpos/js/action/customer/action'
+], function ($, Component, storage, ko, urlBuilder, CustomerView, CustomerModel, CustomerAction) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: 'Magestore_Webpos/customer/customer-list'
         },
-        customers: ko.observable([]),
-        searchKey: ko.observable(''),
-        pageSize: 10,
-        curPage: ko.observable(1),
-        isLoading: false,
-        stopLazyLoad: false,
+        customers: CustomerModel.customers,
+        searchKey: CustomerModel.searchKey,
+        pageSize: CustomerModel.pageSize,
+        curPage: CustomerModel.curPage,
+        isLoading: CustomerModel.isLoading,
+        stopLazyLoad: CustomerModel.stopLazyLoad,
 
+        isCustomerSelect: CustomerModel.isCustomerSelect,
         initialize: function () {
-            var self = this;
             this._super();
-            self.showList(1);
-        },
-
-        addItemsToList: function(items){
-            var customers = this.customers();
-            for(var i in items){
-                customers.push(items[i]);
-            }
-            this.customers(customers);
-        },
-
-        showList: function (pageNumber) {
-
-            var self = this;
-            var params = {};
-            this.customerView=CustomerView();
-            var serviceUrl = urlBuilder.createUrl('/webpos/customers?searchCriteria[pageSize]='+this.pageSize+'&searchCriteria[currentPage]='+pageNumber, params);
-            var payload = {};
-            this.isLoading = true;
-            storage.get(
-                serviceUrl, JSON.stringify(payload)
-            ).done(function (response) {
-                self.addItemsToList(response.items);
-                self.curPage(pageNumber);
-                if(pageNumber * self.pageSize >= response.total_count) {
-                    self.stopLazyLoad = true;
-                }
-                if(!self.customerView.getData() || self.customerView.getData().id){
-                    self.customerView.setData(response.items[0]);
-                }
-            }).fail(function (response) {
-
-            }).always(function (response){
-                self.isLoading = false;
-            });
+            CustomerAction().showList(1);
         },
         filter: function (element, event) {
             if(this.isLoading) {
@@ -81,36 +49,37 @@ define([
             storage.get(
                 serviceUrl, JSON.stringify(payload)
             ).done(function (response) {
-                self.customers(response.items);
-                self.curPage(1);
+                CustomerModel.customers(response.items);
+                CustomerModel.curPage(1);
 
             }).fail(function (response) {
 
             }).always(function (response){
-                self.isLoading = false;
+                CustomerModel.isLoading = false;
             });
         },
         lazyload: function() {
-            if(this.isLoading) {
+            if(CustomerModel.isLoading) {
                 return;
             }
-            if(this.stopLazyLoad) {
+            if(CustomerModel.stopLazyLoad) {
                 return;
             }
-            var curPage = this.curPage() + 1;
+            var curPage = CustomerModel.curPage() + 1;
             this.showList(curPage);
         },
-        loadCustomer: function (data,event) {
-            $('.customer-item').removeClass('customer-active');
-            var thisItem = $(event.target);
-            if(thisItem.closest("li.customer-item").length>0){
-                //nếu click vào cái con, thì bôi màu hết
-                thisItem.closest("li.customer-item").addClass('customer-active');
-            }else{
-                //nếu ko phải cái con thì thôi
-                thisItem.addClass('customer-active');
-            }
-            CustomerView().setData(data);
+        loadCustomer: function (data) {
+            // $('.customer-item').removeClass('customer-active');
+            // var thisItem = $(event.target);
+            // if(thisItem.closest("li.customer-item").length>0){
+            //     //nếu click vào cái con, thì bôi màu hết
+            //     thisItem.closest("li.customer-item").addClass('customer-active');
+            // }else{
+            //     //nếu ko phải cái con thì thôi
+            //     thisItem.addClass('customer-active');
+            // }
+             CustomerModel.isCustomerSelect(data.id);
+             CustomerView().setData(data);
         },
 
 

@@ -17,10 +17,10 @@
     <div class="main-item-order">
         <div class="wrap-item-order wrap-item-customer scroll-grid" data-bind="event: {scroll: lazyload}" }>
             <ul id="list-customer" class="list-customer" data-bind="foreach: customers">
-                <li class="product-item bg-cl-active customer-item" data-bind="attr: {id: id} , click: $parent.loadCustomer">
+                <li class="product-item bg-cl-active customer-item" data-bind="attr: {id: id} , click: $parent.loadCustomer.bind($parent),  css:{'selected': id == $parent.isCustomerSelect()}">
                     <div class="item">
-                        <h4 class="customer-name" data-bind="text: firstname+ ' '+ lastname"></h4>
-                        <a class="customer-email" data-bind="text: email"></a>
+                        <h4 id="customer-name" class="customer-name" data-bind="text: firstname+ ' '+ lastname"></h4>
+                        <a id="customer-email" class="customer-email" data-bind="text: email"></a>
                     </div>
                 </li>
             </ul>
